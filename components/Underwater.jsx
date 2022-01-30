@@ -214,7 +214,7 @@ class Background {
   }
 }
 function setUpBubble(p5) {
-  for (let i = 0; i < 29; i++) {
+  for (let i = 0; i < 70; i++) {
     bubbels.push(
       new Bubble(
         p5,
@@ -227,7 +227,7 @@ function setUpBubble(p5) {
 }
 
 function runBubble(p5) {
-  for (let i = 0; i < 29; i++) {
+  for (let i = 0; i < 70; i++) {
     bubbels[i].update(p5, p5.random(-0.1, 0.1), -0.01);
     bubbels[i].edge(p5);
     bubbels[i].show(p5);
