@@ -91,7 +91,6 @@ const Underwater = (props) => {
       </button>
       <Link
         href="https://billetto.se/e/plx-tjaro-2022-biljetter-602287"
-        target="_blank"
       >
         <a
           target="_blank"
@@ -113,7 +112,7 @@ const Underwater = (props) => {
 
 export default Underwater;
 
-//The bubbels around the cursor
+//The bubbles around the cursor
 function setUpParticles(p5) {
   gravity = p5.createVector(p5.random(-0.01, 0.01), -0.01);
 
@@ -135,7 +134,7 @@ function runParticle(p5) {
     particle.push(new Particle(p5, p5.mouseX, p5.mouseY, p5.random(5)));
   }
 }
-//
+
 class Particle {
   constructor(p5, xPos, yPos, r) {
     this.pos = p5.createVector(xPos, yPos);
@@ -214,7 +213,7 @@ class Background {
   }
 }
 
-//The bubbels
+//The bubbles
 function setUpBubble(p5) {
   for (let i = 0; i < 70; i++) {
     bubbels.push(
