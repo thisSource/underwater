@@ -78,7 +78,10 @@ const Underwater = (props) => {
 
   return (
     <div className="">
-      <p className="absolute lg:top-1/2 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-9xl text-4xl lg:opacity-100 opacity-0 text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
+      <p className="absolute lg:top-1/2 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-12xl text-10xl lg:opacity-100 text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
+        Tjärö
+      </p>
+      <p className="absolute lg:top-2/3 top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-5xl text-5xl lg:opacity-100 text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
         PLX 2022
       </p>
       <button
