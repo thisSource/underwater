@@ -220,7 +220,7 @@ function setUpBubble(p5) {
         p5,
         p5.random(0, p5.width),
         p5.random(p5.height, p5.height + 1200),
-        p5.random(5) * setRatio
+        p5.random(5)
       )
     );
   }
