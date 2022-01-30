@@ -30,7 +30,7 @@ let gravity;
 let amplitude;
 
 const Underwater = (props) => {
-  let [isPlaying, setIsPlaying] = useState("Play");
+  let [isPlaying, setIsPlaying] = useState("Play audio");
   const preload = (p5) => {
     p5.soundFormats("mp3", "ogg", "wav");
     mySound = p5.loadSound("audio/final.mp3");
@@ -53,15 +53,21 @@ const Underwater = (props) => {
   const mouseClicked = (p5) => {
     if (mySound.isPlaying()) {
       mySound.pause();
-      setIsPlaying("Play");
+      setIsPlaying("Play audio");
     } else {
       mySound.play();
-      setIsPlaying("Pause");
+      setIsPlaying("Pause audio");
     }
   };
 
   const mouseMoved = (p5) => {
     runParticle(p5);
+  };
+
+  const touchMoved = (p5) => {
+    for (let i = 0; i < 1; i++) {
+      particle.push(new Particle(p5, p5.mouseX, p5.mouseY, p5.random(5)));
+    }
   };
 
   const draw = (p5) => {
@@ -74,11 +80,11 @@ const Underwater = (props) => {
 
   return (
     <div className="">
-      <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-9xl text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
+      <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-9xl text-6xl text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
         PLX 2022
       </p>
       <button
-        className="absolute bottom-10 left-20 transform -translate-x-1/2 -translate-y-1/2 text-1xl text-yellow-500 font-Salty hover:text-red-100 drop-shadow-[0_15px_35px_rgba(255,255,255)]"
+        className="absolute bottom-10 left-28 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-yellow-500 font-Salty hover:text-red-100 drop-shadow-[0_15px_35px_rgba(255,255,255)]"
         onClick={() => {
           mouseClicked();
         }}
@@ -91,7 +97,7 @@ const Underwater = (props) => {
       >
         <a
           target="_blank"
-          className="absolute bottom-10 right-1 transform -translate-x-1/2 -translate-y-1/2 text-1xl text-yellow-500 font-Salty hover:text-red-100 drop-shadow-[0_15px_35px_rgba(255,255,255)]"
+          className="absolute bottom-10 right-1 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-yellow-500 font-Salty hover:text-red-100 drop-shadow-[0_15px_35px_rgba(255,255,255)]"
         >
           Tickets
         </a>
@@ -99,7 +105,7 @@ const Underwater = (props) => {
       <Sketch
         preload={preload}
         mouseMoved={mouseMoved}
-        // mouseClicked={mouseClicked}
+        touchMoved={touchMoved}
         setup={setup}
         draw={draw}
       />
