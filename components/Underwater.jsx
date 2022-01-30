@@ -18,10 +18,10 @@ let mySound;
 let bubbels = [];
 let background;
 
-let windowSize;
-let windowOriginSize;
-let ratio;
-let setRatio;
+// let windowSize;
+// let windowOriginSize;
+// let ratio;
+// let setRatio;
 
 let yOff = 0;
 
@@ -42,10 +42,10 @@ const Underwater = (props) => {
     amplitude = new window.p5.Amplitude();
     gravity = p5.createVector(0.03, 0.05);
 
-    windowOriginSize = p5.createVector(1500, 800);
-    windowSize = p5.createVector(p5.width, p5.height);
-    ratio = windowSize.div(windowOriginSize);
-    setRatio = ratio.x / ratio.y;
+    // windowOriginSize = p5.createVector(1500, 800);
+    // windowSize = p5.createVector(p5.width, p5.height);
+    // ratio = windowSize.div(windowOriginSize);
+    // setRatio = ratio.x / ratio.y;
 
     setUpBubble(p5);
   };
@@ -65,9 +65,7 @@ const Underwater = (props) => {
   };
 
   const touchMoved = (p5) => {
-    for (let i = 0; i < 1; i++) {
-      particle.push(new Particle(p5, p5.mouseX, p5.mouseY, p5.random(5)));
-    }
+    runParticle(p5);
   };
 
   const draw = (p5) => {
@@ -115,6 +113,7 @@ const Underwater = (props) => {
 
 export default Underwater;
 
+//The bubbels around the cursor
 function setUpParticles(p5) {
   gravity = p5.createVector(p5.random(-0.01, 0.01), -0.01);
 
@@ -136,6 +135,7 @@ function runParticle(p5) {
     particle.push(new Particle(p5, p5.mouseX, p5.mouseY, p5.random(5)));
   }
 }
+//
 class Particle {
   constructor(p5, xPos, yPos, r) {
     this.pos = p5.createVector(xPos, yPos);
@@ -178,6 +178,7 @@ class Particle {
   }
 }
 
+//Water surface
 function showSurf(p5, level) {
   p5.fill(0, 0, 255, 20);
   p5.stroke(30, 100, 255);
@@ -187,10 +188,8 @@ function showSurf(p5, level) {
   for (let x = 0; x <= p5.width + 10; x += 5) {
     let y = p5.map(p5.noise(xOff, yOff), 0, 1, 70, 150);
     p5.vertex(x, y);
-    // Increment x dimension for noise
     xOff += 0.01 + level / 2;
   }
-  // increment y dimension for noise
   yOff += 0.01;
 
   p5.vertex(p5.width, p5.height);
@@ -198,6 +197,7 @@ function showSurf(p5, level) {
   p5.endShape(p5.CLOSE);
 }
 
+//Background gradient
 class Background {
   constructor(p5) {
     this.c1 = p5.color(250);
@@ -213,6 +213,8 @@ class Background {
     }
   }
 }
+
+//The bubbels
 function setUpBubble(p5) {
   for (let i = 0; i < 70; i++) {
     bubbels.push(
