@@ -80,11 +80,11 @@ const Underwater = (props) => {
 
   return (
     <div className="">
-      <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-9xl text-6xl text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
+      <p className="absolute lg:top-1/2 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:text-9xl text-4xl text-yellow-500 font-Salty drop-shadow-[0_15px_35px_rgba(255,255,255)]">
         PLX 2022
       </p>
       <button
-        className="absolute bottom-10 left-28 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-yellow-500 font-Salty hover:text-red-100 drop-shadow-[0_15px_35px_rgba(255,255,255)]"
+        className="absolute bottom-10 left-28 transform -translate-x-1/2 -translate-y-1/2 lg:text-4xl text-2xl text-yellow-500 font-Salty hover:text-gray-300 drop-shadow-[0_15px_35px_rgba(0,255,0)]"
         onClick={() => {
           mouseClicked();
         }}
@@ -97,7 +97,7 @@ const Underwater = (props) => {
       >
         <a
           target="_blank"
-          className="absolute bottom-10 right-1 transform -translate-x-1/2 -translate-y-1/2 text-4xl text-yellow-500 font-Salty hover:text-red-100 drop-shadow-[0_15px_35px_rgba(255,255,255)]"
+          className="absolute bottom-10 right-1 transform -translate-x-1/2 -translate-y-1/2 lg:text-4xl text-2xl text-yellow-500 font-Salty hover:text-gray-300 drop-shadow-[0_15px_45px_rgba(255,0,0)]"
         >
           Tickets
         </a>
