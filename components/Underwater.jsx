@@ -33,7 +33,7 @@ const Underwater = (props) => {
   let [isPlaying, setIsPlaying] = useState("Play audio");
   const preload = (p5) => {
     p5.soundFormats("mp3", "ogg", "wav");
-    mySound = p5.loadSound("audio/final.mp3");
+    mySound = p5.loadSound("audio/Vatten.mp3");
   };
 
   const setup = (p5, canvasParentRef) => {
@@ -72,7 +72,7 @@ const Underwater = (props) => {
     background.show(p5);
     let level = amplitude.getLevel();
     setUpParticles(p5);
-    showSurf(p5, level / 2);
+    showSurf(p5, level / 20);
     runBubble(p5);
   };
 
@@ -188,9 +188,9 @@ function showSurf(p5, level) {
   p5.beginShape();
   let xOff = 0;
   for (let x = 0; x <= p5.width + 10; x += 5) {
-    let y = p5.map(p5.noise(xOff, yOff), 0, 1, 70, 150);
+    let y = p5.map(p5.noise(xOff, yOff), 0, 1, 70, 170);
     p5.vertex(x, y);
-    xOff += 0.01 + level / 2;
+    xOff += 0.01 + level;
   }
   yOff += 0.01;
 
