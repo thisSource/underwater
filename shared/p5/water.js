@@ -1,115 +1,58 @@
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-
-// Will only import `react-p5` on client-side
-const Sketch = dynamic(
-  () =>
-    import("react-p5").then((mod) => {
-      require("p5/lib/addons/p5.sound");
-      return mod.default;
-    }),
-  {
-    ssr: false,
-  }
-);
 
 let mySound;
 
 let bubbels = [];
 let background;
 
+// let windowSize;
+// let windowOriginSize;
+// let ratio;
+// let setRatio;
+
 let yOff = 0;
+
 let particle = [];
 let gravity;
 let amplitude;
+  const preload = (p5) => {
+    p5.soundFormats("mp3", "ogg", "wav");
+    mySound = p5.loadSound("audio/Vatten.mp3");
+  };
 
-const setup = (p5, canvasParentRef) => {
-  p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-  background = new Background(p5);
-  amplitude = new window.p5.Amplitude();
-  gravity = p5.createVector(0.03, 0.05);
+  const setup = (p5, canvasParentRef) => {
+    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
+    background = new Background(p5);
+    amplitude = new window.p5.Amplitude();
+    gravity = p5.createVector(0.03, 0.05);
 
-  setUpBubble(p5);
-};
-
-const draw = (p5) => {
-  background.show(p5);
-  let level = amplitude.getLevel();
-  setUpParticles(p5);
-  showSurf(p5, level / 20);
-  runBubble(p5);
-};
-
-const mouseMoved = (p5) => {
-  runParticle(p5);
-};
-
-const touchMoved = (p5) => {
-  runParticle(p5);
-};
-const preload = (p5) => {
-  p5.soundFormats("mp3", "ogg", "wav");
-  mySound = p5.loadSound("audio/Vatten.mp3");
-};
-
-const Underwater = () => {
-  let [isPlaying, setIsPlaying] = useState(false);
+    setUpBubble(p5);
+  };
 
   const togglePlay = () => {
     if (mySound.isPlaying()) {
       mySound.pause();
-      setIsPlaying(false);
+      setIsPlaying(false)
     } else {
       mySound.play();
       setIsPlaying(true);
     }
   };
 
-  const styles = {
-    positionCenter:
-      "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform",
-    title:
-      "font-Salty text-7xl sm:text-8xl text-center text-yellow-500 drop-shadow-[0_15px_35px_rgba(255,255,255)] lg:text-12xl lg:opacity-100",
-    subTitle:
-      "font-Salty text-3xl text-center text-yellow-500 drop-shadow-[0_15px_35px_rgba(255,255,255)] lg:text-5xl lg:opacity-100",
-    buttonText:
-      "font-Salty text-2xl text-yellow-500 drop-shadow-[0_15px_35px_rgba(0,255,0)] sm:hover:text-gray-300 lg:text-4xl",
+  const mouseMoved = (p5) => {
+    runParticle(p5);
   };
 
-  return (
-    <div>
-      <div className={styles.positionCenter}>
-        <p className={styles.title}>Tjärö</p>
-        <p className={styles.subTitle}>PLX 2022</p>
-      </div>
+  const touchMoved = (p5) => {
+    runParticle(p5);
+  };
 
-      <div className="absolute bottom-10 w-full px-5">
-        <div className="flex justify-between">
-          <button className={styles.buttonText} onClick={togglePlay}>
-            {isPlaying ? "Pause audio" : "Play audio"}
-          </button>
-          <a
-            href="https://billetto.se/e/plx-tjaro-2022-biljetter-602287"
-            target="_blank"
-            className={styles.buttonText}
-            rel="noopener noreferrer"
-          >
-            Tickets
-          </a>
-        </div>
-      </div>
-      <Sketch
-        preload={preload}
-        mouseMoved={mouseMoved}
-        touchMoved={touchMoved}
-        setup={setup}
-        draw={draw}
-      />
-    </div>
-  );
-};
-
-export default Underwater;
+  const draw = (p5) => {
+    background.show(p5);
+    let level = amplitude.getLevel();
+    setUpParticles(p5);
+    showSurf(p5, level / 20);
+    runBubble(p5);
+  };
 
 //The bubbles around the cursor
 function setUpParticles(p5) {
