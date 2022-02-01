@@ -24,7 +24,6 @@ let background;
 // let setRatio;
 
 let yOff = 0;
-
 let particle = [];
 let gravity;
 let amplitude;
