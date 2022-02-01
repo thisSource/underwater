@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Custom";
-  src: url("/fonts/Pelavin Fonts - SaltyDog-Solid.otf");
+  src: url("/fonts/SaltyDogSolid.otf");
 }
 
 body {
@@ -12,9 +12,3 @@ body {
   height: 100vh;
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    /* max-height: 100vh; */
-    overflow-y: hidden;
-  }
-}
